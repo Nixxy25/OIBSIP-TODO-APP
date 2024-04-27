@@ -1,8 +1,11 @@
-import React from 'react'
+import TodoListPage from "./components/todolistPage";
+import "./App.css"
 
 const App = () => {
   return (
-    <div>App</div>
+    <div>
+      <TodoListPage />
+    </div>
   )
 }
 
