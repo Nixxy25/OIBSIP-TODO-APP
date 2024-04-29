@@ -103,7 +103,8 @@ const TodoListPage = () => {
         }
     }, [])
   return (
-    <div className="flex justify-center p-8 bg-[#1995ad] h-screen w-full">
+    <div className="bg-[#1995ad] h-screen">
+    <div className="flex justify-center p-8 bg-[#1995ad]  w-full">
         <div>
             <div className="pb-12 text-center text-2xl font-bold">
                 <h1 className="text-[#f1f1f2]">Todo List App</h1>
@@ -191,7 +192,7 @@ const TodoListPage = () => {
                             <div key={index} className="">
                                 <div className="flex justify-between items-center bg-[#a1d6e2] text-[#f1f1f2] mb-4 p-4">
                                     <div className="">
-                                        <h3 className="text font-bold">{item.title}</h3>
+                                        <h3 className="font-bold">{item.title}</h3>
                                         <h3 className="pb-4">{item.description}</h3>
                                         <p className="text-sm font-bold text-[#1995ad]">Completed on : {item.todoCompleted}</p>
                                     </div>
@@ -209,6 +210,7 @@ const TodoListPage = () => {
                 </div>
             </div>
         </div>
+    </div>
     </div>
   )
 }
