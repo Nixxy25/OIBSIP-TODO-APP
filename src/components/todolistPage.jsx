@@ -75,7 +75,7 @@ const TodoListPage = () => {
         let removeCompleteTodo = [...completeSection];
         removeCompleteTodo.pop(index);
         setCompleteSection(removeCompleteTodo);
-        localStorage.setItem('completeTodos',JSON.stringify(removeCompleteTodo))
+        localStorage.setItem('completedTodos',JSON.stringify(removeCompleteTodo))
     }
     const addTodoHandler = () => {
         let newTodoItem = {
@@ -109,12 +109,12 @@ const TodoListPage = () => {
                 <h1 className="text-[#f1f1f2]">Todo List App</h1>
             </div>
 
-            <div className="bg-[#f1f1f2] p-16">
-                <div className="flex gap-6 mb-10 pb-4 border-b border-[#1995ad]">
+            <div className="bg-gray-800 p-16 max-sm:p-12">
+                <div className="flex gap-6 mb-10 pb-4 border-b border-[#1995ad] max-sm:flex max-sm:flex-col">
                     <div className="flex flex-col gap-2">
                         <h2 className="text-[#1995ad] font-bold text-[21px]">Title</h2>
                         <input 
-                            className="rounded-md px-4 py-1 outline-none" 
+                            className="rounded-md px-4 py-1 text-[#1995ad] outline-none" 
                             type="text" 
                             placeholder="What's the task title"
                             value={newTitle}
@@ -125,7 +125,7 @@ const TodoListPage = () => {
                     <div className="flex flex-col gap-2">
                         <h2 className="text-[#1995ad] font-bold text-[21px]">Description</h2>
                         <input 
-                            className="px-4 py-1 outline-none rounded-md" 
+                            className="px-4 py-1 outline-none text-[#1995ad] rounded-md" 
                             type="text" 
                             placeholder="What's the title description"
                             value={description}
@@ -133,15 +133,15 @@ const TodoListPage = () => {
                         </input>
                     </div>
 
-                    <div className="relative top-10">
-                        <button className="bg-[#1995ad] rounded-md px-4 py-1 text-white" type="button" onClick={addTodoHandler}>Add</button>
+                    <div className="relative top-10 max-sm:top-0">
+                        <button className="bg-[#1995ad] rounded-md px-4 py-1 text-white hover:bg-[#a1d6e2]" type="button" onClick={addTodoHandler}>Add</button>
                     </div>
                 </div>
 
                 <div>
                     <div className="pb-4">
-                        <button className={`px-2 py-1 bg-[#f1f1f2] font-bold text-[#1995ad] ${completeScreen === false && "active"}`} onClick={() => setCompleteScreen(false)}>Task</button>
-                        <button className={`px-2 py-1 bg-[#f1f1f2] font-bold text-[#1995ad] ${completeScreen === true && "active"}`} onClick={() => setCompleteScreen(true)}>Completed</button>
+                        <button className={`px-2 py-1 bg-[#f1f1f2] font-bold text-[#1995ad] bg-white ${completeScreen === false && "active"}`} onClick={() => setCompleteScreen(false)}>Task</button>
+                        <button className={`px-2 py-1 bg-[#f1f1f2] font-bold text-[#1995ad] bg-white ${completeScreen === true && "active"}`} onClick={() => setCompleteScreen(true)}>Completed</button>
                     </div>
                     
                     
@@ -154,16 +154,16 @@ const TodoListPage = () => {
                                 return(
                                 <div key={index} className="bg-[#1995ad] p-3">
                                 <div className="flex flex-col gap-2">
-                                    <input className="rounded-md p-2 text-[#1995ad] outline-none" placeholder="updated tilte" 
+                                    <input className="rounded-md p-2 text-[#1995ad] font-bold outline-none" placeholder="updated tilte" 
                                     onChange={(e) => handleUpdatedTitle(e.target.value)} 
                                     value={todoEditedItem.title} />
 
-                                    <textarea rows={4} className="rounded-md text-[#1995ad] px-2 py-4 outline-none" placeholder="description title"
+                                    <textarea rows={4} className="rounded-md text-gray-800 px-2 py-4 outline-none" placeholder="description title"
                                     onChange={(e) => handleUpdatedDescription(e.target.value)} 
                                     value={todoEditedItem.description} ></textarea>
 
                                     <div className="py-4 flex justify-center">
-                                        <button className="bg-[#f1f1f2] px-6 py-2 text-[#1995ad] font-bold" type="button" onClick={handleUpdateEditedTodo}>Add</button>
+                                        <button className="bg-[#f1f1f2] px-6 py-2 text-[#1995ad] hover:bg-[#a1d6e2] font-bold" type="button" onClick={handleUpdateEditedTodo}>Add</button>
                                     </div>
                                 </div>
                                 </div>
@@ -171,10 +171,10 @@ const TodoListPage = () => {
                             }else{
                             return (
                                 <div key={index} className="">
-                                <div className="flex justify-between items-center bg-white mb-4 p-4">
+                                <div className="flex justify-between max-sm:flex-col lg:items-center bg-white mb-4 p-4">
                                     <div className="">
                                         <h3 className="text-[#1995ad] font-bold text-xl">{item.title}</h3>
-                                        <h3 className="pb-4 text-[#a1d6e2] text-md">{item.description}</h3>
+                                        <h3 className="pb-4 text-gary-800 text-md">{item.description}</h3>
                                     </div>
 
                                     <div className="flex gap-2 items-center">
@@ -197,7 +197,7 @@ const TodoListPage = () => {
                                     </div>
 
                                     <div className="flex gap-2 items-center">
-                                        <svg onClick={() => handleDeleteCompleteTodo(index)} className="w-5 hover:fill-red-800" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
+                                        <svg onClick={() => handleDeleteCompleteTodo(index)} className="w-5 hover:fill-gray-800" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
                                     </div>
                                 </div>
                             </div>
