@@ -106,8 +106,8 @@ const TodoListPage = () => {
     <div className="bg-[#1995ad] h-screen">
     <div className="flex justify-center p-8 bg-[#1995ad]  w-full">
         <div>
-            <div className="pb-12 text-center text-2xl font-bold">
-                <h1 className="text-[#f1f1f2]">Todo List App</h1>
+            <div className="pb-12 text-center text-4xl font-bold">
+                <h1 className="text-[#f1f1f2] oleo">Todo List App</h1>
             </div>
 
             <div className="bg-gray-800 p-16 max-sm:p-12">
@@ -117,7 +117,7 @@ const TodoListPage = () => {
                         <input 
                             className="rounded-md px-4 py-1 text-[#1995ad] outline-none" 
                             type="text" 
-                            placeholder="What's the task title"
+                            placeholder="Task title"
                             value={newTitle}
                             onChange={(e) => setNewTitle(e.target.value)}>
                         </input>
@@ -128,7 +128,7 @@ const TodoListPage = () => {
                         <input 
                             className="px-4 py-1 outline-none text-[#1995ad] rounded-md" 
                             type="text" 
-                            placeholder="What's the title description"
+                            placeholder="Title description"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}>
                         </input>
