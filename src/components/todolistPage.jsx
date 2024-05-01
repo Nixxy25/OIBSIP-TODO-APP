@@ -34,7 +34,7 @@ const TodoListPage = () => {
 
     const handleDeleteTodo = (index) => {
         let removeTodo = [...todo];
-        removeTodo.pop(index);
+        removeTodo.splice(index,1);
         setAddTodo(removeTodo);
         localStorage.setItem('todolist',JSON.stringify(removeTodo))
         
@@ -73,7 +73,7 @@ const TodoListPage = () => {
 
     const handleDeleteCompleteTodo = (index) => {
         let removeCompleteTodo = [...completeSection];
-        removeCompleteTodo.pop(index);
+        removeCompleteTodo.splice(index,1);
         setCompleteSection(removeCompleteTodo);
         localStorage.setItem('completedTodos',JSON.stringify(removeCompleteTodo))
     }
